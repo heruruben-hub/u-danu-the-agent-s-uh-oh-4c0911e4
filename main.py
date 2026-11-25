@@ -10,9 +10,12 @@ word, 13 characters, no trailing newline, so it passes the gate (UTF-8 text,
 import os
 
 WORD = "recalculating"
+MAX_LEN = 99
 
 
 def main() -> None:
+    if not (1 <= len(WORD) <= MAX_LEN) or not WORD.strip():
+        raise ValueError("entry word must be 1-99 non-blank characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(WORD)
